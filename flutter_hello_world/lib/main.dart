@@ -94,6 +94,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     onPressed: () {
                       setState(() {
+                        if (buttons[index] == ' ') {
+                          return; 
+                        }
                         if (buttons[index] == 'AC') {
                           equation = '';
                           displayEx = '';
@@ -126,7 +129,18 @@ class _MyHomePageState extends State<MyHomePage> {
                                     displayEx = ''; // 次の数字のために画面をクリア
                                     equation += '÷';
                                   }
-                                }else if (buttons[index] == '='){  
+                                } else if (buttons[index] == '+/-'){
+                                     if (displayEx.isNotEmpty) {
+                                      double value = double.parse(displayEx); 
+                                      value = value * -1;
+                                      displayEx = value.toString(); // 次の数字のために画面をクリア
+                                      if (operator == ''){
+                                        equation = displayEx;
+                                      } else {
+                                        equation = firstNum.toString() + operator + displayEx; 
+                                      }
+                                    }
+                                  } else if (buttons[index] == '='){  
                              // 1. 今画面にある数字も数値に変えて、2番目の数字（secondNum）として扱う
                               if (displayEx.isNotEmpty) {
                                 double secondNum = double.parse(displayEx);
