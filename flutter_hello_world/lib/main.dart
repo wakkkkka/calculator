@@ -110,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                  firstNum = double.parse(displayEx); 
                                  operator = '-';
                                  displayEx = ''; // 次の数字のために画面をクリア
-                                 quation += '-';
+                                 equation += '-';
                               }
                             } else if (buttons[index] == '×'){
                                 if (displayEx.isNotEmpty) {
